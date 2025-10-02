@@ -1,103 +1,186 @@
 import Image from "next/image";
+import ScrollTriggeredCategories from "./components/ScrollTriggeredCategories";
+
+const categories = [
+  { 
+    title: "Half Sleeve T-shirt", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/ZYToAesRsdsW1822B0dZll280FqmAwTsD5amASyv.jpg",
+    link: "https://deenfashionbd.com/category/mens-fashion/half-sleeve-t-shirt"
+  },
+  { 
+    title: "Kids T-shirt", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/hvbgvVMk2j2gc9LOjz2p17mSUlq39I6ZYNykwgtk.jpg",
+    link: "https://deenfashionbd.com/category/kids-boys/kids-t-shirt"
+  },
+  { 
+    title: "Football Jersey", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/VrpwmMvEKBtmpEMgl9K5aP1fYJJNFp0mRBIUYp6n.jpg",
+    link: "https://deenfashionbd.com/category/sports/football-jersey"
+  },
+  { 
+    title: "Polo T-shirt", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/Ph4exTupZUChKLJhN25ANmGajY6JjPo9L0HIGdy1.jpg",
+    link: "https://deenfashionbd.com/category/mens-fashion/polo-t-shirt"
+  },
+  { 
+    title: "Calligraphy T-Shirt", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/bo5PXYUHuTBfIkrxYqa6hwpChU5PcnUJHEzSXVxa.jpg",
+    link: "https://deenfashionbd.com/category/mens-fashion/calligraphy-t-shirt"
+  },
+  { 
+    title: "Sports T- shirt", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/5f8kqZqx1umATm7VoyyBuzvLU7v36f5B4s21iphZ.jpg",
+    link: "https://deenfashionbd.com/category/mens-fashion/sports-t-shirt"
+  },
+  { 
+    title: "Sports Polo T-Shirt", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/32ERx2mTza2n0mfPlBMIAtnqwzW5gHDTlAWDay3C.jpg",
+    link: "https://deenfashionbd.com/category/mens-fashion/sports-polo-t-shirt"
+  },
+  { 
+    title: "Sports Trouser", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/tCKbZSZhUbAjwU5hHTtjwvnYtVxunzqSA7oYAySU.jpg",
+    link: "https://deenfashionbd.com/category/mens-fashion/sports-trouser"
+  },
+  { 
+    title: "Joggers", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/AZO9UCQrfgVrnJyBTtOhp0hWTGNovQQUrZ8Zom4O.jpg",
+    link: "https://deenfashionbd.com/category/mens-fashion/joggers"
+  },
+  { 
+    title: "Winter Collection", 
+    image: "https://deenfashionbd.com/public/storage/images/subCategory/YGAubYsnJW7IOC0d2ke0hrxVcMac5Au9b1u2MO1E.jpg",
+    link: "https://deenfashionbd.com/category/mens-fashion/winter-collection"
+  }
+];
+
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main>
+      {/* Hero banner */}
+      <section className="relative">
+        <div className="w-full h-[500px] md:h-[600px]">
+          <Image 
+            src="https://deenfashionbd.com/public/storage/images/slider/0rXWDqaCBN0DY1t9uYO0F9JfCCah5zoONEeRlxWB.jpg" 
+            alt="Hero Banner" 
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Categories */}
+      <ScrollTriggeredCategories categories={categories} />
+
+      {/* Promotional Cards */}
+      <section className="mx-auto max-w-8xl px-8 md:px-12 lg:px-16 py-10 md:py-12 bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* T-Shirt and Trouser */}
+          <div className="group relative overflow-hidden">
+            <a href="#" className="block">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="https://deenfashionbd.com/public/storage/images/banner/vcfIdFzDG6I9ZNvvHlI48ofFL9QP83vSxmbyrfhP.jpg"
+                  alt="T-Shirt and Trouser"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg font-semibold text-center">
+                  T-Shirt and Trouser
+                </h3>
+              </div>
+            </a>
+          </div>
+
+          {/* Kids T-shirt */}
+          <div className="group relative overflow-hidden">
+            <a href="https://www.deenfashionbd.com/category/kids-boys/kids-t-shirt" className="block">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="https://deenfashionbd.com/public/storage/images/banner/IuFTS1LmSn1HszBj62qnf1WybuwMbbpS4rpJ02AP.jpg"
+                  alt="Kids T-shirt"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg font-semibold text-center">
+                  Kids T-shirt
+                </h3>
+              </div>
+            </a>
+          </div>
+
+          {/* Half Sleeve T-shirt */}
+          <div className="group relative overflow-hidden">
+            <a href="https://www.deenfashionbd.com/category/mens-fashion/half-sleeve-t-shirt" className="block">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="https://deenfashionbd.com/public/storage/images/banner/qgeMueIzENLOdlhOHak4G0JiWMEoALRkAAPIhRyJ.jpg"
+                  alt="Half Sleeve T-shirt"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg font-semibold text-center">
+                  Half Sleeve T-shirt
+                </h3>
+              </div>
+            </a>
+          </div>
+
+          {/* Calligraphy T-Shirt */}
+          <div className="group relative overflow-hidden">
+            <a href="https://www.deenfashionbd.com/category/mens-fashion/calligraphy-t-shirt" className="block">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="https://deenfashionbd.com/public/storage/images/banner/3cD0cYNuRAF4aLhAQFvSuQJbGMeeKix10xhmynQX.jpg"
+                  alt="Calligraphy T-Shirt"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg font-semibold text-center">
+                  Calligraphy T-Shirt
+                </h3>
+              </div>
+            </a>
+          </div>
+
+          {/* Full Sleeve */}
+          <div className="group relative overflow-hidden">
+            <a href="https://www.deenfashionbd.com/category/mens-fashion/full-sleeve-t-shirt" className="block">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="https://deenfashionbd.com/public/storage/images/banner/Hao04eoaXcqKIhls8NTdZKNkhf1NPIal5GykSnLX.jpg"
+                  alt="Full Sleeve"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg font-semibold text-center">
+                  Full Sleeve
+                </h3>
+              </div>
+            </a>
+          </div>
+
+          {/* Polo T-shirt */}
+          <div className="group relative overflow-hidden">
+            <a href="https://www.deenfashionbd.com/category/mens-fashion/polo-t-shirt" className="block">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="https://deenfashionbd.com/public/storage/images/banner/mhMddey9RPJra5z8jv2JLw27ttCeKjLqZDVNWPrr.jpg"
+                  alt="Polo T-shirt"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg font-semibold text-center">
+                  Polo T-shirt
+                </h3>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
   );
 }
