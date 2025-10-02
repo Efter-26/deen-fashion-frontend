@@ -2,9 +2,9 @@
 
 export default function StickyCart() {
   return (
-    <a 
-      href="#" 
-      className="fixed right-0 top-1/2 -translate-y-1/2 z-50 bg-white shadow-lg min-w-[70px] overflow-hidden -mt-4"
+    <a
+      href="#"
+      className="hidden lg:block fixed right-0 top-1/2 -translate-y-1/2 z-50 bg-white shadow-lg min-w-[70px] overflow-hidden -mt-4"
       id="fly_image_destination_id"
     >
       <div className="p-2 flex flex-col items-center gap-2">

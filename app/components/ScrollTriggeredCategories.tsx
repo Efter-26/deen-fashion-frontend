@@ -16,11 +16,26 @@ type Props = {
 export default function ScrollTriggeredCategories({ categories }: Props) {
   const [isVisible, setIsVisible] = useState(false);
   const [hasScrolledDown, setHasScrolledDown] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Observer for categories section
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // For mobile, show categories immediately
+    if (window.innerWidth < 1024) {
+      setIsVisible(true);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
+
+    // Observer for categories section (desktop only)
     const categoriesObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -34,7 +49,7 @@ export default function ScrollTriggeredCategories({ categories }: Props) {
       }
     );
 
-    // Observer for hero section
+    // Observer for hero section (desktop only)
     const heroObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && hasScrolledDown) {
@@ -59,6 +74,7 @@ export default function ScrollTriggeredCategories({ categories }: Props) {
     }
 
     return () => {
+      window.removeEventListener('resize', checkMobile);
       if (sectionRef.current) {
         categoriesObserver.unobserve(sectionRef.current);
       }
@@ -76,10 +92,10 @@ export default function ScrollTriggeredCategories({ categories }: Props) {
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold text-neutral-900">Shop By Categories</h2>
       </div>
-      <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 transition-all duration-1000 ease-out ${
+      <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 transition-all duration-1000 ease-out ${
         isVisible 
-          ? 'opacity-100 translate-y-0 max-h-screen' 
-          : 'opacity-0 translate-y-[-50px] max-h-0 overflow-hidden'
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-[-50px]'
       }`}>
         {categories.map((c, index) => (
           <div 

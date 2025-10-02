@@ -6,49 +6,55 @@ import { faFacebookF, faInstagram, faTiktok, faYoutube } from '@fortawesome/free
 export default function Footer() {
   return (
     <footer className="text-white mt-12 bg-black">
-      <div className="mx-auto max-w-8xl px-8 md:px-12 lg:px-16 py-10 md:py-12 grid gap-8 md:grid-cols-4">
-        <div>
-          <div className="mb-4">
-            <Image
-              src="https://deenfashionbd.com/public/storage/images/general_setting/nnJNDqhW3gtQkMKg5UligH7kU70ssUxYRRS6ZrES.png"
-              alt="Deen Fashion Logo"
-              width={200}
-              height={60}
-              className="h-auto"
-            />
+      <div className="mx-auto max-w-7xl px-6 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="md:col-span-1">
+            <div className="mb-4">
+              <Image
+                src="https://deenfashionbd.com/public/storage/images/general_setting/nnJNDqhW3gtQkMKg5UligH7kU70ssUxYRRS6ZrES.png"
+                alt="Deen Fashion Logo"
+                width={200}
+                height={60}
+                className="h-auto"
+              />
+            </div>
+            <p className="text-sm text-white leading-6">
+              Deen Fashion BD is your go-to destination for premium Islamic and modest clothing in Bangladesh. We bring you elegant abayas, stylish panjabis, comfortable kurtas, hijabs, and more — all designed to reflect your values with fashion. Experience reliable service, affordable prices, and fast delivery across the country.
+            </p>
           </div>
-          <p className="text-sm text-white leading-6">
-            Deen Fashion BD is your go-to destination for premium Islamic and modest clothing in Bangladesh. We bring you elegant abayas, stylish panjabis, comfortable kurtas, hijabs, and more — all designed to reflect your values with fashion. Experience reliable service, affordable prices, and fast delivery across the country.
-          </p>
-        </div>
 
-        <div>
-          <h3 className="font-semibold mb-3 text-white">INFORMATION</h3>
-          <ul className="space-y-2 text-white text-sm">
-            <li><Link href="#" className="hover:underline">Shipment Policy</Link></li>
-            <li><Link href="#" className="hover:underline">Care Instructions</Link></li>
-            <li><Link href="#" className="hover:underline">Terms and Conditions</Link></li>
-          </ul>
-        </div>
+          {/* Information */}
+          <div>
+            <h3 className="font-semibold mb-4 text-white text-lg uppercase tracking-wide">INFORMATION</h3>
+            <ul className="space-y-3 text-white text-sm">
+              <li><Link href="#" className="hover:underline">Shipment Policy</Link></li>
+              <li><Link href="#" className="hover:underline">Care Instructions</Link></li>
+              <li><Link href="#" className="hover:underline">Terms and Conditions</Link></li>
+            </ul>
+          </div>
 
-        <div>
-          <h3 className="font-semibold mb-3 text-white">QUICK LINK</h3>
-          <ul className="space-y-2 text-white text-sm">
-            <li><Link href="#" className="hover:underline">Contact Us</Link></li>
-            <li><Link href="#" className="hover:underline">New Arrival</Link></li>
-            <li><Link href="#" className="hover:underline">Offer</Link></li>
-            <li><Link href="#" className="hover:underline">Shop</Link></li>
-          </ul>
-        </div>
+          {/* Quick Link */}
+          <div>
+            <h3 className="font-semibold mb-4 text-white text-lg uppercase tracking-wide">QUICK LINK</h3>
+            <ul className="space-y-3 text-white text-sm">
+              <li><Link href="#" className="hover:underline">Contact Us</Link></li>
+              <li><Link href="#" className="hover:underline">New Arrival</Link></li>
+              <li><Link href="#" className="hover:underline">Offer</Link></li>
+              <li><Link href="#" className="hover:underline">Shop</Link></li>
+            </ul>
+          </div>
 
-        <div>
-          <h3 className="font-semibold mb-3 text-white">PROFILE</h3>
-          <ul className="space-y-2 text-white text-sm">
-            <li><Link href="#" className="hover:underline">Order Tracking</Link></li>
-            <li><Link href="#" className="hover:underline">Wishlist</Link></li>
-            <li><Link href="#" className="hover:underline">Login</Link></li>
-            <li><Link href="#" className="hover:underline">Register</Link></li>
-          </ul>
+          {/* Profile */}
+          <div>
+            <h3 className="font-semibold mb-4 text-white text-lg uppercase tracking-wide">PROFILE</h3>
+            <ul className="space-y-3 text-white text-sm">
+              <li><Link href="#" className="hover:underline">Order Tracking</Link></li>
+              <li><Link href="#" className="hover:underline">Wishlist</Link></li>
+              <li><Link href="#" className="hover:underline">Login</Link></li>
+              <li><Link href="#" className="hover:underline">Register</Link></li>
+            </ul>
+          </div>
         </div>
       </div>
 

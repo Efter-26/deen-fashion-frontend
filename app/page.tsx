@@ -60,12 +60,21 @@ export default function Home() {
     <main>
       {/* Hero banner */}
       <section className="relative">
-        <div className="w-full h-[500px] md:h-[600px]">
+        <div className="w-full h-[400px] md:h-[600px]">
+          {/* Mobile Hero Image */}
+          <Image 
+            src="https://deenfashionbd.com/public/storage/images/slider/4cvlSmYy87wQS4PwtpPV9hG89B2JKBDXCcjaGgMM.jpg" 
+            alt="Hero Banner Mobile" 
+            fill
+            className="object-contain md:hidden bg-gray-100"
+            priority
+          />
+          {/* Desktop Hero Image */}
           <Image 
             src="https://deenfashionbd.com/public/storage/images/slider/0rXWDqaCBN0DY1t9uYO0F9JfCCah5zoONEeRlxWB.jpg" 
-            alt="Hero Banner" 
+            alt="Hero Banner Desktop" 
             fill
-            className="object-cover"
+            className="object-cover hidden md:block"
             priority
           />
         </div>

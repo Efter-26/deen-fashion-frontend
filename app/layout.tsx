@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import StickyCart from "./components/StickyCart";
 import StickySocial from "./components/StickySocial";
+import MobileBottomNav from "./components/MobileBottomNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,11 +32,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
-        <StickyCart />
-        <StickySocial />
+            <Header />
+            {children}
+            <Footer />
+            <StickyCart />
+            <StickySocial />
+            <MobileBottomNav />
       </body>
     </html>
   );

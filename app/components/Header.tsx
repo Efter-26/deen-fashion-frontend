@@ -3,11 +3,77 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+// Mobile Menu Item Component
+function MobileMenuItem({ 
+  title, 
+  href, 
+  hasSubmenu = false, 
+  submenuItems = [] 
+}: {
+  title: string;
+  href: string;
+  hasSubmenu?: boolean;
+  submenuItems?: { title: string; href: string }[];
+}) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white text-neutral-900 shadow-sm">
+    <div className="border-b border-neutral-200">
+      <div className="flex items-center justify-between p-4">
+        <Link 
+          href={href} 
+          className="flex-1 text-neutral-900 font-medium hover:text-indigo-600 transition-colors"
+          onClick={() => !hasSubmenu && setIsOpen(false)}
+        >
+          {title}
+        </Link>
+        {hasSubmenu && (
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-1 hover:bg-neutral-100 rounded transition-colors"
+            aria-label={`Toggle ${title} submenu`}
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        )}
+      </div>
+      
+      {/* Submenu */}
+      {hasSubmenu && isOpen && (
+        <div className="bg-neutral-50 border-t border-neutral-200">
+          {submenuItems.map((item, index) => (
+            <Link
+              key={index}
+              href={item.href}
+              className="block px-6 py-3 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-indigo-600 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  return (
+    <header className="w-full bg-white text-neutral-900 shadow-sm sticky top-0 z-40 lg:static">
       {/* Top info bar (promo + utilities) */}
       <div className="hidden md:block text-sm bg-neutral-300">
         <div className="px-2 py-0">
@@ -54,20 +120,40 @@ export default function Header() {
 
       {/* Header middle (matches provided structure) */}
       <div className="mx-auto max-w-8xl px-10 py-4">
-        <div className="grid grid-cols-12 items-center gap-4">
+        {/* Mobile Layout */}
+        <div className="lg:hidden flex items-center justify-between w-full">
+          {/* Left: Hamburger Menu */}
+          <button
+            className="p-2 rounded border border-neutral-200"
+            aria-label="Toggle menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+
+          {/* Center: Logo */}
+          <a href="https://deenfashionbd.com" className="flex-1 flex justify-center">
+            <img src="https://deenfashionbd.com/public/storage/images/general_setting/Qla2KGQyTH6HzukE0AW0nApHFrSWRMiCc5O2tRrT.png" alt="logo" className="h-9 w-auto" />
+          </a>
+
+          {/* Right: Search Icon */}
+          <button
+            onClick={() => setSearchOpen(!searchOpen)}
+            className="p-2 inline-flex items-center text-indigo-900"
+            aria-label="Toggle search"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+          </button>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid grid-cols-12 items-center gap-4">
           {/* Left: menu + logo + Shop link */}
-          <div className="col-span-12 lg:col-span-3 flex items-center gap-4 shrink-0">
-            <button
-              className="p-2 rounded border border-neutral-200 lg:hidden"
-              aria-label="Toggle menu"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
+          <div className="col-span-3 flex items-center gap-4 shrink-0">
             <a href="https://deenfashionbd.com" className="shrink-0">
               <img src="https://deenfashionbd.com/public/storage/images/general_setting/Qla2KGQyTH6HzukE0AW0nApHFrSWRMiCc5O2tRrT.png" alt="logo" className="h-9 w-auto ml-12" />
             </a>
-            <div className="relative hidden lg:block group ml-14">
+            <div className="relative group ml-14">
               <a href="https://deenfashionbd.com/shop" className="inline-flex items-center text-[19px] gap-1 text-neutral-800 font-semibold">
                 <span>Shop</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -127,7 +213,7 @@ export default function Header() {
           </div>
 
           {/* Center: Search bar */}
-          <div className="col-span-12 lg:col-span-7">
+          <div className="col-span-7">
             <div id="search_id" className="search_wrapper search_class">
               <div className="search_input_box">
                 <input type="text" placeholder="Search Your Products..." className="search__product w-full border border-indigo-800/60 rounded px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-800/40" />
@@ -140,7 +226,7 @@ export default function Header() {
           </div>
 
           {/* Right: cart and user */}
-          <div className="col-span-10 lg:col-span-2">
+          <div className="col-span-2">
             <ul className="flex items-center justify-end gap-6">
               <li>
                 <a href="#" className="relative inline-flex items-center text-indigo-900">
@@ -157,6 +243,132 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Search Bar */}
+      {searchOpen && (
+        <div className="lg:hidden px-4 pb-4">
+          <div className="search_input_box">
+            <input 
+              type="text" 
+              placeholder="Search Your Products..." 
+              className="search__product w-full border border-indigo-800/60 rounded px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-800/40" 
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div className="lg:hidden fixed inset-0 z-50">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/50 bg-opacity-20"
+            onClick={() => setMenuOpen(false)}
+          ></div>
+          
+          {/* Menu Panel */}
+          <div className="relative w-2/3 max-w-sm h-full bg-white shadow-lg">
+            {/* Menu Header */}
+            <div className="flex items-center justify-between p-4 border-b border-neutral-200">
+              <h2 className="text-lg font-semibold text-neutral-900">Menu</h2>
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="p-2 hover:bg-neutral-100 rounded"
+                aria-label="Close menu"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            
+            {/* Menu Items */}
+            <div className="py-4">
+              <MobileMenuItem 
+                title="HOME" 
+                href="https://deenfashionbd.com"
+                hasSubmenu={false}
+              />
+              <MobileMenuItem 
+                title="SHOP" 
+                href="https://deenfashionbd.com/shop"
+                hasSubmenu={false}
+              />
+              <MobileMenuItem 
+                title="NEW ARRIVAL" 
+                href="#"
+                hasSubmenu={false}
+              />
+              <MobileMenuItem 
+                title="MENS FASHION" 
+                href="https://deenfashionbd.com/category/mens-fashion"
+                hasSubmenu={true}
+                submenuItems={[
+                  { title: "Half Sleeve T-Shirt", href: "https://deenfashionbd.com/category/mens-fashion/half-sleeve-t-shirt" },
+                  { title: "Polo T-Shirt", href: "https://deenfashionbd.com/category/mens-fashion/polo-t-shirt" },
+                  { title: "Calligraphy T-Shirt", href: "https://deenfashionbd.com/category/mens-fashion/calligraphy-t-shirt" },
+                  { title: "Sports T- Shirt", href: "https://deenfashionbd.com/category/mens-fashion/sports-t-shirt" },
+                  { title: "Sports Polo T-Shirt", href: "https://deenfashionbd.com/category/mens-fashion/sports-polo-t-shirt" },
+                  { title: "Sports Trouser", href: "https://deenfashionbd.com/category/mens-fashion/sports-trouser" },
+                  { title: "Joggers", href: "https://deenfashionbd.com/category/mens-fashion/joggers" },
+                  { title: "Winter Collection", href: "https://deenfashionbd.com/category/mens-fashion/winter-collection" }
+                ]}
+              />
+              <MobileMenuItem 
+                title="WOMEN'S FASHION" 
+                href="https://deenfashionbd.com/category/womens-fashion"
+                hasSubmenu={false}
+              />
+              <MobileMenuItem 
+                title="KIDS (BOYS)" 
+                href="https://deenfashionbd.com/category/kids-boys"
+                hasSubmenu={true}
+                submenuItems={[
+                  { title: "Kids T-shirt", href: "https://deenfashionbd.com/category/kids-boys/kids-t-shirt" }
+                ]}
+              />
+              <MobileMenuItem 
+                title="KIDS (GIRLS)" 
+                href="https://deenfashionbd.com/category/kids-girls"
+                hasSubmenu={false}
+              />
+              <MobileMenuItem 
+                title="SPORTS" 
+                href="https://deenfashionbd.com/category/sports"
+                hasSubmenu={true}
+                submenuItems={[
+                  { title: "Bangladesh Jersey", href: "https://deenfashionbd.com/category/sports/bangladesh-jersey" },
+                  { title: "Football Jersey", href: "https://deenfashionbd.com/category/sports/football-jersey" }
+                ]}
+              />
+              <MobileMenuItem 
+                title="ACCESSORIES" 
+                href="https://deenfashionbd.com/category/accessories"
+                hasSubmenu={true}
+                submenuItems={[
+                  { title: "Wallet", href: "https://deenfashionbd.com/category/accessories/wallet" },
+                  { title: "Belt", href: "https://deenfashionbd.com/category/accessories/belt" },
+                  { title: "Cap", href: "https://deenfashionbd.com/category/accessories/cap" }
+                ]}
+              />
+              <MobileMenuItem 
+                title="FOOTWEAR" 
+                href="https://deenfashionbd.com/category/footwear"
+                hasSubmenu={true}
+                submenuItems={[
+                  { title: "Men's Half Shoe's", href: "https://deenfashionbd.com/category/footwear/mens-half-shoes" }
+                ]}
+              />
+              <MobileMenuItem 
+                title="OFFER" 
+                href="#"
+                hasSubmenu={false}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Navigation removed per request */}
     </header>
