@@ -4,6 +4,20 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Generate static params for all product IDs
+export async function generateStaticParams() {
+  // In a real app, this would fetch from your API
+  const productIds = [
+    "1001", "1002", "1003", "1004", "1005", 
+    "1006", "1007", "1008", "1009", "1010", 
+    "1011", "1012"
+  ];
+  
+  return productIds.map((id) => ({
+    id: id,
+  }));
+}
+
 // Mock product data - in real app this would come from API
 const productData = {
   id: "1006",
@@ -100,7 +114,7 @@ const productData = {
   ]
 };
 
-export default function ProductPage() {
+export default function ProductPage({ params }: { params: { id: string } }) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("L");
   const [quantity, setQuantity] = useState(1);

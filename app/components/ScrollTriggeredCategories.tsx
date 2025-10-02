@@ -64,8 +64,9 @@ export default function ScrollTriggeredCategories({ categories }: Props) {
     }
 
         return () => {
-          if (sectionRef.current) {
-            categoriesObserver.unobserve(sectionRef.current);
+          const currentSectionRef = sectionRef.current;
+          if (currentSectionRef) {
+            categoriesObserver.unobserve(currentSectionRef);
           }
           if (heroSection) {
             heroObserver.unobserve(heroSection);
