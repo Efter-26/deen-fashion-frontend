@@ -88,7 +88,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* T-Shirt and Trouser */}
           <div className="group relative overflow-hidden">
-            <a href="#" className="block">
+            <a href="/shop" className="block">
               <div className="aspect-[4/5] relative">
                 <Image
                   src="https://deenfashionbd.com/public/storage/images/banner/vcfIdFzDG6I9ZNvvHlI48ofFL9QP83vSxmbyrfhP.jpg"
@@ -105,7 +105,7 @@ export default function Home() {
 
           {/* Kids T-shirt */}
           <div className="group relative overflow-hidden">
-            <a href="https://www.deenfashionbd.com/category/kids-boys/kids-t-shirt" className="block">
+            <a href="/shop" className="block">
               <div className="aspect-[4/5] relative">
                 <Image
                   src="https://deenfashionbd.com/public/storage/images/banner/IuFTS1LmSn1HszBj62qnf1WybuwMbbpS4rpJ02AP.jpg"
@@ -122,7 +122,7 @@ export default function Home() {
 
           {/* Half Sleeve T-shirt */}
           <div className="group relative overflow-hidden">
-            <a href="https://www.deenfashionbd.com/category/mens-fashion/half-sleeve-t-shirt" className="block">
+            <a href="/shop" className="block">
               <div className="aspect-[4/5] relative">
                 <Image
                   src="https://deenfashionbd.com/public/storage/images/banner/qgeMueIzENLOdlhOHak4G0JiWMEoALRkAAPIhRyJ.jpg"
@@ -139,7 +139,7 @@ export default function Home() {
 
           {/* Calligraphy T-Shirt */}
           <div className="group relative overflow-hidden">
-            <a href="https://www.deenfashionbd.com/category/mens-fashion/calligraphy-t-shirt" className="block">
+            <a href="/shop" className="block">
               <div className="aspect-[4/5] relative">
                 <Image
                   src="https://deenfashionbd.com/public/storage/images/banner/3cD0cYNuRAF4aLhAQFvSuQJbGMeeKix10xhmynQX.jpg"
@@ -156,7 +156,7 @@ export default function Home() {
 
           {/* Full Sleeve */}
           <div className="group relative overflow-hidden">
-            <a href="https://www.deenfashionbd.com/category/mens-fashion/full-sleeve-t-shirt" className="block">
+            <a href="/shop" className="block">
               <div className="aspect-[4/5] relative">
                 <Image
                   src="https://deenfashionbd.com/public/storage/images/banner/Hao04eoaXcqKIhls8NTdZKNkhf1NPIal5GykSnLX.jpg"
@@ -173,7 +173,7 @@ export default function Home() {
 
           {/* Polo T-shirt */}
           <div className="group relative overflow-hidden">
-            <a href="https://www.deenfashionbd.com/category/mens-fashion/polo-t-shirt" className="block">
+            <a href="/shop" className="block">
               <div className="aspect-[4/5] relative">
                 <Image
                   src="https://deenfashionbd.com/public/storage/images/banner/mhMddey9RPJra5z8jv2JLw27ttCeKjLqZDVNWPrr.jpg"
