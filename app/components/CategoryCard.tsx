@@ -7,7 +7,7 @@ type Props = {
   link: string;
 };
 
-export default function CategoryCard({ title, image, link }: Props) {
+export default function CategoryCard({ title, image }: Props) {
   return (
     <div className="group text-center">
       <div className="aspect-[4/5] w-full overflow-hidden rounded border border-neutral-200 bg-white relative">

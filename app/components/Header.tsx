@@ -175,7 +175,7 @@ export default function Header() {
                     </ul>
                   </div>
                   <div className="w-[170px] h-full bg-gray-100 p-4">
-                    <a href="https://deenfashionbd.com/category/womens-fashion" className="block font-semibold text-neutral-900 mb-2 text-sm">WOMEN'S FASHION</a>
+                    <a href="https://deenfashionbd.com/category/womens-fashion" className="block font-semibold text-neutral-900 mb-2 text-sm">WOMEN&apos;S FASHION</a>
                   </div>
                   <div className="w-[160px] h-full bg-white p-4">
                     <a href="https://deenfashionbd.com/category/kids-boys" className="block font-semibold text-neutral-900 mb-2 text-sm">KIDS (BOYS)</a>
@@ -204,7 +204,7 @@ export default function Header() {
                   <div className="w-[160px] h-full bg-white p-4">
                     <a href="https://deenfashionbd.com/category/footwear" className="block font-semibold text-neutral-900 mb-2 text-sm">FOOTWEAR</a>
                     <ul className="space-y-1 text-neutral-700">
-                      <li><a href="https://deenfashionbd.com/category/footwear/mens-half-shoes" className="hover:underline">Men's Half Shoe's</a></li>
+                      <li><a href="https://deenfashionbd.com/category/footwear/mens-half-shoes" className="hover:underline">Men&apos;s Half Shoe&apos;s</a></li>
                     </ul>
                   </div>
                 </div>

@@ -16,23 +16,13 @@ type Props = {
 export default function ScrollTriggeredCategories({ categories }: Props) {
   const [isVisible, setIsVisible] = useState(false);
   const [hasScrolledDown, setHasScrolledDown] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Check if mobile
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // lg breakpoint
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
     // For mobile, show categories immediately
     if (window.innerWidth < 1024) {
       setIsVisible(true);
-      return () => window.removeEventListener('resize', checkMobile);
+      return;
     }
 
     // Observer for categories section (desktop only)
@@ -73,15 +63,14 @@ export default function ScrollTriggeredCategories({ categories }: Props) {
       heroObserver.observe(heroSection);
     }
 
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-      if (sectionRef.current) {
-        categoriesObserver.unobserve(sectionRef.current);
-      }
-      if (heroSection) {
-        heroObserver.unobserve(heroSection);
-      }
-    };
+        return () => {
+          if (sectionRef.current) {
+            categoriesObserver.unobserve(sectionRef.current);
+          }
+          if (heroSection) {
+            heroObserver.unobserve(heroSection);
+          }
+        };
   }, [hasScrolledDown]);
 
   return (
